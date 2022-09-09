@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: url("../assets/background.svg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding: 20px 50px;
+  gap: 10px;
+  color: #333;
+}
+
+header .logo h4 {
+  font-size: calc(100% + 0.2em);
+}
+
+header .logo svg {
+  height: 35px;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 30%;
+  margin: auto;
+  gap: 20px;
+}
+
+main .dog-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+main .dog-container .dog-picture {
+  background: url("https://thumbs.dreamstime.com/b/golden-retriever-dog-21668976.jpg")
+    no-repeat center;
+  background-size: cover;
+  border-radius: 30px;
+  overflow: hidden;
+  width: 330px;
+  aspect-ratio: 1/1;
+  box-shadow: 0 4px 5px rgba(51, 51, 51, 0.1333333333);
+}
+
+main .dog-container p {
+  font-weight: 600;
+  color: #333;
+}
+
+.interaction-section {
+  width: 80%;
+}
+
+.interaction-section .inputs-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interaction-section .inputs-section .name-input {
+  width: 80%;
+  padding: 13px;
+  border: 2px solid rgba(51, 51, 51, 0.1333333333);
+  border-right: none;
+  border-radius: 7px 0 0 7px;
+  background: hsla(0deg, 0%, 100%, 0.7);
+  outline: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: border 150ms ease-in-out;
+  text-transform: capitalize;
+  color: #333;
+}
+
+.interaction-section .inputs-section .name-input:focus {
+  border-color: rgba(51, 51, 51, 0.3333333333);
+}
+
+.interaction-section .inputs-section .name-input:focus ~ .submit-btn {
+  border-color: rgba(51, 51, 51, 0.3333333333);
+}
+
+.interaction-section .inputs-section .submit-btn {
+  padding: 14px 15px;
+  border: 2px solid rgba(51, 51, 51, 0.1333333333);
+  border-radius: 0 7px 7px 0;
+  color: #333;
+  background: rgba(255, 226, 226, 0.4);
+  outline: none;
+  cursor: pointer;
+  transition: border 150ms ease-in-out, background 150ms ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.interaction-section .inputs-section .submit-btn:hover {
+  background: rgba(255, 226, 226, 0.8);
+}
+
+.interaction-section .inputs-section .submit-btn svg {
+  height: 16px;
+  transform: scale(1.4);
+  color: rgba(51, 51, 51, 0.6);
+}
+
+.prediction-results {
+  color: #333;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 172, 172, 0.6);
+  transition: transform 700ms ease-in-out;
+}
+
+.prediction-results hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border: 1px solid rgba(255, 172, 172, 0.6);
+  padding: 0;
+  width: 100%;
+}
+
+.prediction-results h2 {
+  text-align: center;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.prediction-results .results {
+  padding: 10px 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 0fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.prediction-results .results .age-container,
+.prediction-results .results .gender-container,
+.prediction-results .results .nationality-container {
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.prediction-results .results .age-container h3,
+.prediction-results .results .gender-container h3,
+.prediction-results .results .nationality-container h3 {
+  padding: 5px;
+}
+
+.prediction-results .results .age-container hr,
+.prediction-results .results .gender-container hr,
+.prediction-results .results .nationality-container hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid rgba(51, 51, 51, 0.2);
+  padding: 0;
+  width: 100%;
+}
+
+.prediction-results .results .age-container p,
+.prediction-results .results .gender-container p,
+.prediction-results .results .nationality-container p {
+  padding: 5px;
+}
+
+.prediction-results .results .nationality-container {
+  grid-area: 2/1/3/3;
+}
+
+.prediction-results .results .nationality-container .predictedNationality {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.prediction-results
+  .results
+  .nationality-container
+  .predictedNationality
+  .pie-chart {
+  border-radius: 50%;
+  background: conic-gradient(orange 60%, red 40%);
+  height: 100px;
+  aspect-ratio: 1/1;
+  margin: 20px 0;
+}
+
+.prediction-results
+  .results
+  .nationality-container
+  .predictedNationality
+  .pie-infos {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.prediction-results
+  .results
+  .nationality-container
+  .predictedNationality
+  .pie-infos
+  .info-color {
+  padding: 0 7px;
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-right: 5px;
+}
+
+.prediction-results
+  .results
+  .nationality-container
+  .predictedNationality
+  .pie-infos
+  .info-color.i-first {
+  background: red;
+}
+
+.prediction-results
+  .results
+  .nationality-container
+  .predictedNationality
+  .pie-infos
+  .info-color.i-second {
+  background: orange;
+}
+
+.hide {
+  transform: scale(0);
+}
