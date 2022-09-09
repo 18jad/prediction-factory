@@ -6,7 +6,8 @@ const form = document.querySelector("form"),
   firstNationality = document.getElementById("firstNationality"),
   secondNationality = document.getElementById("secondNationality"),
   chart = document.querySelector(".pie-chart"),
-  dogPicture = document.getElementById("dogPicture");
+  dogPicture = document.getElementById("dogPicture"),
+  inputedName = document.getElementById("inputedName");
 
 // new random dog picture every time page load
 fetchDog();
@@ -17,6 +18,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
   let name = nameInput.value;
   fetchAll(name);
+  inputedName.textContent = name.capitalize();
   resultsContainer.classList.remove("hide");
 });
 
