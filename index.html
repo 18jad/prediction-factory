@@ -25,13 +25,13 @@
     <!-- Main body section -->
     <main>
         <div class="dog-container">
-            <div class="dog-picture"></div>
+            <div class="dog-picture" id="dogePicture"></div>
             <p class="dog-greeting">This cute dog is greeting you 👋🏻</p>
         </div>
         <form class="interaction-section">
             <div class="inputs-section">
                 <input type="text" class="name-input" placeholder="Enter your name" required autocomplete="no"
-                    spellcheck="false">
+                    spellcheck="false" id="nameInput">
                 <button type="submit" class="submit-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -40,6 +40,38 @@
                 </button>
             </div>
         </form>
+        <!-- Results -->
+        <div class="prediction-results hide">
+            <h2> <span id="inputedName">Name</span> predictions:</h2>
+            <hr>
+            <div class="results">
+                <div class="gender-container">
+                    <h3>Gender</h3>
+                    <hr>
+                    <p id="predictedGender">Male</p>
+                </div>
+                <div class="age-container">
+                    <h3>Age</h3>
+                    <hr>
+                    <p id="predictedAge">18</p>
+                </div>
+                <div class="nationality-container">
+                    <h3>Nationality</h3>
+                    <hr>
+                    <div class="predictedNationality">
+                        <div class="pie-chart"></div>
+                        <div class="pie-infos">
+                            <p class="first-nationality"><span class="info-color i-first"></span>
+                                <span id="firstNationality">Egypt</span>
+                            </p>
+                            <p class="second-nationality"><span class="info-color i-second"></span>
+                                <span id="secondNationality">Egypt</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 
