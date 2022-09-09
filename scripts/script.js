@@ -4,13 +4,15 @@ const form = document.querySelector("form"),
   predictedAge = document.getElementById("predictedAge"),
   predictedGender = document.getElementById("predictedGender"),
   firstNationality = document.getElementById("firstNationality"),
-  secondNationality = document.getElementById("secondNationality");
+  secondNationality = document.getElementById("secondNationality"),
+  chart = document.querySelector(".pie-chart");
 
 // for name input submit
 form.addEventListener("submit", (e) => {
   // prevent page from loading on submit
   e.preventDefault();
   let name = nameInput.value;
+  fetchNationality(name);
   resultsContainer.classList.remove("hide");
 });
 
@@ -59,11 +61,23 @@ function fetchNationality(name) {
         const secondCountryProbability = secondCountry.probability;
         firstNationality.textContent = firstCountryName;
         secondNationality.textContent = secondCountryName;
+        let calculatedProbability = calculateProbability(
+          firstCountryProbability,
+          secondCountryProbability,
+        );
+        console.log(calculatedProbability.prob1, calculatedProbability.prob2);
+        chart.style.background = `conic-gradient(rgba(255, 172, 172, 0.6) ${calculatedProbability.prob1}%, #3333  ${calculatedProbability.prob2}%)`;
       } else {
         firstNationality.textContent = "";
         secondNationality.textContent = "";
       }
     });
+}
+
+function calculateProbability(first, second) {
+  let calc1 = ((1 - first) * 100) / 2,
+    calc2 = ((1 - second) * 100) / 2;
+  return { prob1: calc1, prob2: calc2 };
 }
 
 // this just to capitalize the first letter of a string
