@@ -22,11 +22,9 @@ header .logo {
   gap: 10px;
   color: #333;
 }
-
 header .logo h4 {
   font-size: calc(100% + 0.2em);
 }
-
 header .logo svg {
   height: 35px;
 }
@@ -40,7 +38,6 @@ main {
   margin: auto;
   gap: 20px;
 }
-
 main .dog-container {
   display: flex;
   align-items: center;
@@ -48,18 +45,15 @@ main .dog-container {
   flex-direction: column;
   gap: 10px;
 }
-
 main .dog-container .dog-picture {
-  background: url("https://thumbs.dreamstime.com/b/golden-retriever-dog-21668976.jpg")
-    no-repeat center;
-  background-size: cover;
+  background: url("") no-repeat center;
+  background-size: cover !important;
   border-radius: 30px;
   overflow: hidden;
   width: 330px;
   aspect-ratio: 1/1;
   box-shadow: 0 4px 5px rgba(51, 51, 51, 0.1333333333);
 }
-
 main .dog-container p {
   font-weight: 600;
   color: #333;
@@ -68,13 +62,11 @@ main .dog-container p {
 .interaction-section {
   width: 80%;
 }
-
 .interaction-section .inputs-section {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-
 .interaction-section .inputs-section .name-input {
   width: 80%;
   padding: 13px;
@@ -89,15 +81,12 @@ main .dog-container p {
   text-transform: capitalize;
   color: #333;
 }
-
 .interaction-section .inputs-section .name-input:focus {
   border-color: rgba(51, 51, 51, 0.3333333333);
 }
-
 .interaction-section .inputs-section .name-input:focus ~ .submit-btn {
   border-color: rgba(51, 51, 51, 0.3333333333);
 }
-
 .interaction-section .inputs-section .submit-btn {
   padding: 14px 15px;
   border: 2px solid rgba(51, 51, 51, 0.1333333333);
@@ -111,11 +100,9 @@ main .dog-container p {
   align-items: center;
   justify-content: center;
 }
-
 .interaction-section .inputs-section .submit-btn:hover {
   background: rgba(255, 226, 226, 0.8);
 }
-
 .interaction-section .inputs-section .submit-btn svg {
   height: 16px;
   transform: scale(1.4);
@@ -136,7 +123,6 @@ main .dog-container p {
   border: 1px solid rgba(255, 172, 172, 0.6);
   transition: transform 700ms ease-in-out;
 }
-
 .prediction-results hr {
   display: block;
   height: 1px;
@@ -145,7 +131,6 @@ main .dog-container p {
   padding: 0;
   width: 100%;
 }
-
 .prediction-results h2 {
   text-align: center;
   padding: 10px;
@@ -153,7 +138,6 @@ main .dog-container p {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .prediction-results .results {
   padding: 10px 30px;
   display: grid;
@@ -162,7 +146,6 @@ main .dog-container p {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 }
-
 .prediction-results .results .age-container,
 .prediction-results .results .gender-container,
 .prediction-results .results .nationality-container {
@@ -173,13 +156,11 @@ main .dog-container p {
   flex-direction: column;
   align-items: center;
 }
-
 .prediction-results .results .age-container h3,
 .prediction-results .results .gender-container h3,
 .prediction-results .results .nationality-container h3 {
   padding: 5px;
 }
-
 .prediction-results .results .age-container hr,
 .prediction-results .results .gender-container hr,
 .prediction-results .results .nationality-container hr {
@@ -190,35 +171,33 @@ main .dog-container p {
   padding: 0;
   width: 100%;
 }
-
 .prediction-results .results .age-container p,
 .prediction-results .results .gender-container p,
 .prediction-results .results .nationality-container p {
   padding: 5px;
 }
-
 .prediction-results .results .nationality-container {
   grid-area: 2/1/3/3;
 }
-
 .prediction-results .results .nationality-container .predictedNationality {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
 .prediction-results
   .results
   .nationality-container
   .predictedNationality
   .pie-chart {
   border-radius: 50%;
-  background: conic-gradient(orange 60%, red 40%);
+  background: conic-gradient(
+    rgba(255, 172, 172, 0.6) 60%,
+    rgba(51, 51, 51, 0.2) 7%
+  );
   height: 100px;
   aspect-ratio: 1/1;
   margin: 20px 0;
 }
-
 .prediction-results
   .results
   .nationality-container
@@ -228,7 +207,6 @@ main .dog-container p {
   justify-content: center;
   flex-direction: column;
 }
-
 .prediction-results
   .results
   .nationality-container
@@ -240,23 +218,21 @@ main .dog-container p {
   border-radius: 3px;
   margin-right: 5px;
 }
-
 .prediction-results
   .results
   .nationality-container
   .predictedNationality
   .pie-infos
   .info-color.i-first {
-  background: red;
+  background: rgba(51, 51, 51, 0.2);
 }
-
 .prediction-results
   .results
   .nationality-container
   .predictedNationality
   .pie-infos
   .info-color.i-second {
-  background: orange;
+  background: rgba(255, 172, 172, 0.6);
 }
 
 .hide {

@@ -5,16 +5,30 @@ const form = document.querySelector("form"),
   predictedGender = document.getElementById("predictedGender"),
   firstNationality = document.getElementById("firstNationality"),
   secondNationality = document.getElementById("secondNationality"),
-  chart = document.querySelector(".pie-chart");
+  chart = document.querySelector(".pie-chart"),
+  dogPicture = document.getElementById("dogPicture");
+
+// new random dog picture every time page load
+fetchDog();
 
 // for name input submit
 form.addEventListener("submit", (e) => {
   // prevent page from loading on submit
   e.preventDefault();
   let name = nameInput.value;
+
   fetchNationality(name);
   resultsContainer.classList.remove("hide");
 });
+
+function fetchDog() {
+  let url = "https://dog.ceo/api/breeds/image/random";
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      dogPicture.style.background = `url(${data.message}) no-repeat center`;
+    });
+}
 
 // fetch the age using name
 function fetchAge(name) {
@@ -74,9 +88,10 @@ function fetchNationality(name) {
     });
 }
 
+// not very well implemented
 function calculateProbability(first, second) {
   let calc1 = ((1 - first) * 100) / 2,
-    calc2 = ((1 - second) * 100) / 2;
+    calc2 = ((1 - second) * 100) / 3;
   return { prob1: calc1, prob2: calc2 };
 }
 
