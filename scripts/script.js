@@ -88,7 +88,6 @@ function fetchNationality(name) {
           firstCountryProbability,
           secondCountryProbability,
         );
-        console.log(calculatedProbability.prob1, calculatedProbability.prob2);
         chart.style.background = `conic-gradient(rgba(255, 172, 172, 0.6) ${calculatedProbability.prob1}%, #3333  ${calculatedProbability.prob2}%)`;
       } else {
         firstNationality.textContent = "";
