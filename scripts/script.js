@@ -40,6 +40,32 @@ function fetchGender(name) {
     });
 }
 
+function fetchNationality(name) {
+  let url = `https://api.nationalize.io/?name=${name}`;
+  fetch(url)
+    // get just the body of response as json
+    .then((res) => res.json())
+    .then((data) => {
+      // Change gender to predicted one
+      // if value is null that mean the name entered is not valid in that case replace with weird name
+      const firstCountry =
+        data.country.length > 0 ? data.country[0] : "Weird Name";
+      const secondCountry =
+        data.country.length > 0 ? data.country[1] : "Weird Name";
+      if (firstCountry != "Weird Name" && secondCountry != "Weird Name") {
+        const firstCountryName = countries[firstCountry.country_id];
+        const firstCountryProbability = firstCountry.probability;
+        const secondCountryName = countries[secondCountry.country_id];
+        const secondCountryProbability = secondCountry.probability;
+        firstNationality.textContent = firstCountryName;
+        secondNationality.textContent = secondCountryName;
+      } else {
+        firstNationality.textContent = "";
+        secondNationality.textContent = "";
+      }
+    });
+}
+
 // this just to capitalize the first letter of a string
 Object.defineProperty(String.prototype, "capitalize", {
   value: function () {
