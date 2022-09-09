@@ -9,7 +9,7 @@
 body {
   background: url("../assets/background.svg") no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 110vh;
   width: 100vw;
   overflow-x: hidden;
 }
@@ -237,4 +237,39 @@ main .dog-container p {
 
 .hide {
   transform: scale(0);
+}
+
+@media screen and (max-width: 1060px) {
+  main {
+    max-width: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  main {
+    max-width: 80%;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  main {
+    max-width: 100%;
+  }
+  main .dog-container .dog-picture {
+    width: 280px;
+  }
+  .prediction-results .results {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
+  .prediction-results .results .nationality-container {
+    grid-area: unset;
+  }
+  .pie-chart,
+  .pie-infos {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 410px) {
 }
