@@ -16,8 +16,7 @@ form.addEventListener("submit", (e) => {
   // prevent page from loading on submit
   e.preventDefault();
   let name = nameInput.value;
-
-  fetchNationality(name);
+  fetchAll(name);
   resultsContainer.classList.remove("hide");
 });
 
@@ -86,6 +85,12 @@ function fetchNationality(name) {
         secondNationality.textContent = "";
       }
     });
+}
+
+function fetchAll(name) {
+  fetchAge(name);
+  fetchGender(name);
+  fetchNationality(name);
 }
 
 // not very well implemented
