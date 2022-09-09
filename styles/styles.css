@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: url("../assets/background.svg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+  height: 100px;
+  padding: 20px 50px;
+  gap: 10px;
+  color: #333;
+}
+
+header .logo h4 {
+  font-size: calc(100% + 0.2em);
+}
+
+header .logo svg {
+  height: 35px;
+}
