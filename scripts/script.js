@@ -16,15 +16,21 @@ fetchDog();
 form.addEventListener("submit", (e) => {
   // prevent page from loading on submit
   e.preventDefault();
+  // get input value aka name
   let name = nameInput.value;
+  // fetch all request at once
   fetchAll(name);
+  // replace the name inside title
   inputedName.textContent = name.capitalize();
+  // show result div when a name is entered
   resultsContainer.classList.remove("hide");
 });
 
+// get random dog picture every time this function called
 function fetchDog() {
   let url = "https://dog.ceo/api/breeds/image/random";
   fetch(url)
+    // get just the body of response as json
     .then((res) => res.json())
     .then((data) => {
       dogPicture.style.background = `url(${data.message}) no-repeat center`;
@@ -44,6 +50,7 @@ function fetchAge(name) {
     });
 }
 
+// to get gender depending on inputed name
 function fetchGender(name) {
   let url = `https://api.genderize.io?name=${name}`;
   fetch(url)
@@ -57,6 +64,7 @@ function fetchGender(name) {
     });
 }
 
+// to get nationality depending on inputed name
 function fetchNationality(name) {
   let url = `https://api.nationalize.io/?name=${name}`;
   fetch(url)
@@ -89,20 +97,21 @@ function fetchNationality(name) {
     });
 }
 
+// use all fetch functions at once
 function fetchAll(name) {
   fetchAge(name);
   fetchGender(name);
   fetchNationality(name);
 }
 
-// not very well implemented
+// not very well implemented but can do the job
 function calculateProbability(first, second) {
   let calc1 = ((1 - first) * 100) / 2,
     calc2 = ((1 - second) * 100) / 3;
   return { prob1: calc1, prob2: calc2 };
 }
 
-// this just to capitalize the first letter of a string
+// this is just to capitalize the first letter of a string
 Object.defineProperty(String.prototype, "capitalize", {
   value: function () {
     return this.charAt(0).toUpperCase() + this.slice(1);
