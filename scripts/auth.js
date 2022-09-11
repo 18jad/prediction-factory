@@ -45,9 +45,19 @@ function signUp() {
     let arr = JSON.parse(localStorage.getItem("users"));
     arr.push({ username, password });
     localStorage.setItem("users", JSON.stringify(arr));
+    signUpCompleted();
   } else {
     localStorage.setItem("users", JSON.stringify([{ username, password }]));
+    signUpCompleted();
   }
+}
+
+function signUpCompleted() {
+  alert("Account created successfully, please sign in");
+  signUpUsername.value = "";
+  signUpPassword.value = "";
+  signUpPasswordConfirmation.value = "";
+  switchAuth("signin");
 }
 
 function signIn() {
