@@ -9,8 +9,8 @@
 body {
   background: url("../assets/background.svg") no-repeat;
   background-size: cover;
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   overflow-x: hidden;
 }
 
@@ -19,6 +19,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 0 40px;
+  white-space: nowrap;
 }
 
 header .logo {
@@ -273,6 +274,9 @@ main .dog-container p {
 }
 
 @media screen and (max-width: 460px) {
+  body {
+    height: 110vh;
+  }
   main {
     max-width: 100%;
   }
@@ -289,6 +293,9 @@ main .dog-container p {
   .pie-chart,
   .pie-infos {
     transform: scale(0.8);
+  }
+  header {
+    padding: 0;
   }
 }
 
@@ -315,7 +322,6 @@ main .dog-container p {
 
 .authentication-container {
   position: absolute;
-  height: 100vh;
   width: 100vw;
   top: 0;
   left: 0;
