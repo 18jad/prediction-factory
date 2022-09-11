@@ -473,3 +473,18 @@ main .dog-container p {
 .error-hide {
   display: none;
 }
+
+.bored-btn {
+  padding: 10px;
+  border: 2px solid rgba(51, 51, 51, 0.1333333333);
+  border-radius: 7px;
+  color: #333;
+  background: rgba(226, 226, 255, 0.4);
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: border 150ms ease-in-out, background 150ms ease-in-out;
+}
+.bored-btn:hover {
+  background: rgba(226, 226, 255, 0.8);
+}
