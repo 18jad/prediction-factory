@@ -50,6 +50,27 @@ function signUp() {
   }
 }
 
+function signIn() {
+  if (!localStorage.getItem("users")) {
+    throw new Error("No users available please sign in first");
+  }
+  let username = signInUsername.value,
+    password = signInPassword.value,
+    users = JSON.parse(localStorage.getItem("users")),
+    found = false;
+  for (let i = 0; i < users.length; ++i) {
+    if (users[i].username == username) {
+      found = true;
+      if (users[i].password == password) {
+        console.log("success");
+      } else {
+        throw new Error("Incorred password");
+      }
+    }
+  }
+  if (!found) throw new Error("Username not found");
+}
+
 signUpForm.addEventListener("submit", (e) => {
   e.preventDefault();
   try {
@@ -62,4 +83,9 @@ signUpForm.addEventListener("submit", (e) => {
       signUpError.classList.add("error-hide");
     }, 2000);
   }
+});
+
+signInForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  signIn();
 });
