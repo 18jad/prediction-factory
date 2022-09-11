@@ -12,7 +12,8 @@ const signInForm = document.querySelector(".signin-container"),
   signUpError = document.getElementById("signUpError"),
   signInError = document.getElementById("signInError"),
   authContainer = document.querySelector(".authentication-container"),
-  signOutBtn = document.querySelector(".signout-btn");
+  signOutBtn = document.querySelector(".signout-btn"),
+  greeting = document.querySelector(".dog-greeting");
 
 // check user status
 // authentication token is stored as string we are converting it to boolean
@@ -21,6 +22,9 @@ let authenticated = localStorage.getItem("authenticated")
     ? false
     : true
   : false;
+
+// store logged in user username, to greet him using it
+let loggedInUser;
 
 // if user already authenticated don't prompt sign in page
 function checkAuthentication() {
@@ -138,6 +142,8 @@ function signIn() {
 
 // remove sign in container and authenticate user
 function signInCompleted() {
+  loggedInUser = signInUsername.value;
+  greeting.textContent = `Hey ${loggedInUser}! This cute dog is greeting you 👋🏻`;
   signInUsername.value = "";
   signInPassword.value = "";
   authContainer.classList.add("hide-auth-container");
@@ -147,7 +153,7 @@ function signInCompleted() {
 function signOut() {
   // change authenticated status back to false
   localStorage.setItem("authenticated", false);
-
+  loggedInUser = "";
   checkAuthentication();
   // show sign in page again
   authContainer.classList.remove("hide-auth-container");
