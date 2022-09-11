@@ -11,16 +11,32 @@ const signInForm = document.querySelector(".signin-container"),
   signInPassword = document.getElementById("signInPassword"),
   signUpError = document.getElementById("signUpError"),
   signInError = document.getElementById("signInError"),
-  authContainer = document.querySelector(".authentication-container");
+  authContainer = document.querySelector(".authentication-container"),
+  signOutBtn = document.querySelector(".signout-btn");
 
 // check user status
+// authentication token is stored as string we are converting it to boolean
 let authenticated = localStorage.getItem("authenticated")
-  ? localStorage.getItem("authenticated")
+  ? localStorage.getItem("authenticated") == "false"
+    ? false
+    : true
   : false;
 
 // if user already authenticated don't prompt sign in page
-if (authenticated) {
-  authContainer.classList.add("error-hide");
+function checkAuthentication() {
+  // authentication token is stored as string we are converting it to boolean
+  authenticated = localStorage.getItem("authenticated")
+    ? localStorage.getItem("authenticated") == "false"
+      ? false
+      : true
+    : false;
+  if (authenticated) {
+    // if authenticated hide sigin screen
+    authContainer.classList.add("error-hide");
+  } else {
+    // if not authenticated show sigin screen
+    authContainer.classList.remove("error-hide");
+  }
 }
 
 // to switch between signin and signup form
@@ -36,7 +52,9 @@ function switchAuth(type) {
 
 signInLink.onclick = () => switchAuth("signin");
 signUpLink.onclick = () => switchAuth("signup");
-
+signOutBtn.addEventListener("click", () => {
+  signOut();
+});
 function signUp() {
   // grab username and passwrod from user input
   let username = signUpUsername.value,
@@ -126,6 +144,15 @@ function signInCompleted() {
   localStorage.setItem("authenticated", true);
 }
 
+function signOut() {
+  // change authenticated status back to false
+  localStorage.setItem("authenticated", false);
+
+  checkAuthentication();
+  // show sign in page again
+  authContainer.classList.remove("hide-auth-container");
+}
+
 signUpForm.addEventListener("submit", (e) => {
   // prevent page from loading
   e.preventDefault();
@@ -163,3 +190,5 @@ signInForm.addEventListener("submit", (e) => {
     }, 2000);
   }
 });
+
+checkAuthentication();
