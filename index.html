@@ -6,74 +6,134 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/styles.css">
+    <script src="./scripts/auth.js" defer></script>
     <script src="./scripts/countries.js" defer></script>
     <script src="./scripts/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/axios-script.js" defer></script>
     <title>Prediction Factory</title>
 </head>
 
 <body>
-    <!-- Header section -->
-    <header>
-        <div class="logo">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
-            </svg>
-            <h4>Prediction Factory</h4>
+    <div class="activity-section">
+        <div class="activity-container">
+            <h3>This is an activity for you: </h3>
+            <p id="activity"></p>
         </div>
-    </header>
-    <!-- Main body section -->
-    <main>
-        <div class="dog-container">
-            <div class="dog-picture" id="dogPicture"></div>
-            <p class="dog-greeting">This cute dog is greeting you 👋🏻</p>
-        </div>
-        <form class="interaction-section" autocomplete="off">
-            <div class="inputs-section">
-                <input type="text" class="name-input" placeholder="Enter your name" required role="presentation"
-                    autocomplete="off" spellcheck="false" id="nameInput">
-                <button type="submit" class="submit-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                        viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
-                    </svg>
-                </button>
+    </div>
+    <div class="authentication-container">
+        <form class="signin-container" action="javascript:void(0)">
+            <div class="input-field">
+                <label for="signInUsername">Username: </label>
+                <input type="text" name="signInUsername" id="signInUsername" class="auth-input"
+                    placeholder="Enter your username" maxlength="12" minlength="3" required>
             </div>
+            <div class="input-field">
+                <label for="signInPassword">Password: </label>
+                <input type="password" name="signInPassword" id="signInPassword" class="auth-input"
+                    placeholder="Enter your password" required>
+            </div>
+            <p class="error error-hide" id="signInError"></p>
+            <button type="submit" class="auth-btn">Sign in
+                <div class="arrow-wrapper">
+                    <div class="arrow"></div>
+                </div>
+            </button>
+            <p>Don't have an account yet? <span id="signUpLink">Sign up</span></p>
         </form>
-        <!-- Results -->
-        <div class="prediction-results hide">
-            <h2> <span id="inputedName">Name</span> predictions:</h2>
-            <hr>
-            <div class="results">
-                <div class="gender-container">
-                    <h3>Gender</h3>
-                    <hr>
-                    <p id="predictedGender"></p>
+        <form class="signup-container hide-auth" action="javascript:void(0)">
+            <div class="input-field">
+                <label for="signUpUsername">Username: </label>
+                <input type="text" name="signUpUsername" id="signUpUsername" class="auth-input"
+                    placeholder="Choose a username" maxlength="12" minlength="3" pattern="[a-z]{0,9}" required>
+            </div>
+            <div class="input-field">
+                <label for="signUpPassword">Password: </label>
+                <input type="password" name="signUpPassword" id="signUpPassword" class="auth-input"
+                    placeholder="Choose a password" required>
+            </div>
+            <div class="input-field">
+                <label for="signUpPasswordConfirmation">Confirm password: </label>
+                <input type="password" name="signUpPasswordConfirmation" id="signUpPasswordConfirmation"
+                    class="auth-input" placeholder="Repeat your password" required>
+            </div>
+            <p class="error error-hide" id="signUpError"></p>
+            <button type="submit" class="auth-btn">Sign up <div class="arrow-wrapper">
+                    <div class="arrow"></div>
+
+                </div></button>
+            <p>Already have an account? <span id="signInLink">Sign in</span></p>
+        </form>
+    </div>
+    <div class="prediction-container">
+        <!-- Header section -->
+        <header>
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5" />
+                </svg>
+                <h4>Prediction Factory</h4>
+            </div>
+            <div>
+                <button class="bored-btn">Bored?</button>
+                <button class="signout-btn">Sign out</button>
+            </div>
+        </header>
+        <!-- Main body section -->
+        <main>
+            <h4 id="ip"></h4>
+            <div class="dog-container">
+                <div class="dog-picture" id="dogPicture"></div>
+                <p class="dog-greeting">This cute dog is greeting you 👋🏻</p>
+            </div>
+            <form class="interaction-section" id="predictionForm" autocomplete="off">
+                <div class="inputs-section">
+                    <input type="text" class="name-input" placeholder="Enter your name" required role="presentation"
+                        autocomplete="off" spellcheck="false" id="nameInput">
+                    <button type="submit" class="submit-btn"><svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                        </svg>
+                    </button>
                 </div>
-                <div class="age-container">
-                    <h3>Age</h3>
-                    <hr>
-                    <p id="predictedAge"></p>
-                </div>
-                <div class="nationality-container">
-                    <h3>Nationality</h3>
-                    <hr>
-                    <div class="predictedNationality">
-                        <div class="pie-chart"></div>
-                        <div class="pie-infos">
-                            <p class="first-nationality"><span class="info-color i-first"></span>
-                                <span id="firstNationality"></span>
-                            </p>
-                            <p class="second-nationality"><span class="info-color i-second"></span>
-                                <span id="secondNationality"></span>
-                            </p>
+            </form>
+            <!-- Results -->
+            <div class="prediction-results hide">
+                <h2> <span id="inputedName">Name</span> predictions:</h2>
+                <hr>
+                <div class="results">
+                    <div class="gender-container">
+                        <h3>Gender</h3>
+                        <hr>
+                        <p id="predictedGender"></p>
+                    </div>
+                    <div class="age-container">
+                        <h3>Age</h3>
+                        <hr>
+                        <p id="predictedAge"></p>
+                    </div>
+                    <div class="nationality-container">
+                        <h3>Nationality</h3>
+                        <hr>
+                        <div class="predictedNationality">
+                            <div class="pie-chart"></div>
+                            <div class="pie-infos">
+                                <p class="first-nationality"><span class="info-color i-first"></span>
+                                    <span id="firstNationality"></span>
+                                </p>
+                                <p class="second-nationality"><span class="info-color i-second"></span>
+                                    <span id="secondNationality"></span>
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </main>
+        </main>
+    </div>
 </body>
 
 </html>
