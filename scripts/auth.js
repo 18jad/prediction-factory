@@ -1,7 +1,6 @@
 const signInForm = document.querySelector(".signin-container"),
   signUpForm = document.querySelector(".signup-container"),
   signInLink = document.getElementById("signInLink"),
-  signUpLink = document.getElementById("signUpLink"),
   signUpLink = document.getElementById("signUpLink");
 
 function switchAuth(type) {
