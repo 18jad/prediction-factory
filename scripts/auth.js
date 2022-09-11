@@ -13,6 +13,16 @@ const signInForm = document.querySelector(".signin-container"),
   signInError = document.getElementById("signInError"),
   authContainer = document.querySelector(".authentication-container");
 
+// check user status
+let authenticated = localStorage.getItem("authenticated")
+  ? localStorage.getItem("authenticated")
+  : false;
+
+// if user already authenticated don't prompt sign in page
+if (authenticated) {
+  authContainer.classList.add("error-hide");
+}
+
 // to switch between signin and signup form
 function switchAuth(type) {
   if (type == "signin") {
@@ -108,10 +118,12 @@ function signIn() {
   if (!found) throw new Error("Username not found");
 }
 
+// remove sign in container and authenticate user
 function signInCompleted() {
   signInUsername.value = "";
   signInPassword.value = "";
   authContainer.classList.add("hide-auth-container");
+  localStorage.setItem("authenticated", true);
 }
 
 signUpForm.addEventListener("submit", (e) => {
