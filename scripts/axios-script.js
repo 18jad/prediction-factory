@@ -1,5 +1,8 @@
 const ip = document.getElementById("ip");
 const boredBtn = document.querySelector(".bored-btn");
+const activity = document.getElementById("activity");
+const activitySection = document.querySelector(".activity-section");
+const activityContainer = document.querySelector(".activity-container");
 
 const ipOptions = {
   method: "GET",
@@ -20,7 +23,7 @@ function getIp() {
       ip.textContent = `Your ip: ${response.data.ip}`;
     })
     .catch((error) => {
-      console.error(error);
+      ip.textContent = `Error ${error}`;
     });
 }
 
@@ -28,11 +31,20 @@ function iAmBored() {
   axios
     .request(boredOptions)
     .then((response) => {
-      console.log(response.data);
+      activity.textContent = response.data.activity;
     })
     .catch((error) => {
-      console.error(error);
+      activity.textContent = error;
     });
 }
 
-boredBtn.onclick = () => iAmBored();
+boredBtn.addEventListener("click", () => {
+  iAmBored();
+  activitySection.classList.add("show-activity");
+  activityContainer.classList.add("show-activity");
+});
+
+activitySection.addEventListener("click", () => {
+  activitySection.classList.remove("show-activity");
+  activityContainer.classList.remove("show-activity");
+});
