@@ -9,6 +9,8 @@
     <script src="./scripts/auth.js" defer></script>
     <script src="./scripts/countries.js" defer></script>
     <script src="./scripts/script.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./scripts/axios-script.js" defer></script>
     <title>Prediction Factory</title>
 </head>
 
@@ -37,7 +39,7 @@
             <div class="input-field">
                 <label for="signUpUsername">Username: </label>
                 <input type="text" name="signUpUsername" id="signUpUsername" class="auth-input"
-                    placeholder="Choose a username" maxlength="12" minlength="3" required>
+                    placeholder="Choose a username" maxlength="12" minlength="3" pattern="[a-z]{0,9}" required>
             </div>
             <div class="input-field">
                 <label for="signUpPassword">Password: </label>
