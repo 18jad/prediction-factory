@@ -10,7 +10,8 @@ const signInForm = document.querySelector(".signin-container"),
   signInUsername = document.getElementById("signInUsername"),
   signInPassword = document.getElementById("signInPassword"),
   signUpError = document.getElementById("signUpError"),
-  signInError = document.getElementById("signInError");
+  signInError = document.getElementById("signInError"),
+  authContainer = document.querySelector(".authentication-container");
 
 // to switch between signin and signup form
 function switchAuth(type) {
@@ -96,6 +97,7 @@ function signIn() {
 
       // check if passwords matches
       if (users[i].password == password) {
+        signInCompleted();
       } else {
         throw new Error("Incorred password");
       }
@@ -104,6 +106,12 @@ function signIn() {
 
   // if user wasn't found
   if (!found) throw new Error("Username not found");
+}
+
+function signInCompleted() {
+  signInUsername.value = "";
+  signInPassword.value = "";
+  authContainer.classList.add("hide-auth-container");
 }
 
 signUpForm.addEventListener("submit", (e) => {
