@@ -1,14 +1,7 @@
 const signInForm = document.querySelector(".signin-container"),
   signUpForm = document.querySelector(".signup-container"),
   signInLink = document.getElementById("signInLink"),
-  signUpLink = document.getElementById("signUpLink"),
-  signUpUsername = document.getElementById("signUpUsername"),
-  signUpPassword = document.getElementById("signUpPassword"),
-  signUpPasswordConfirmation = document.getElementById(
-    "signUpPasswordConfirmation",
-  ),
-  signInUsername = document.getElementById("signInUsername"),
-  signInPassword = document.getElementById("signInPassword");
+  signUpLink = document.getElementById("signUpLink");
 
 function switchAuth(type) {
   if (type == "signin") {
