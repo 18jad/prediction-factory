@@ -1,7 +1,14 @@
-const signInForm = document.querySelector(".signin-container");
-const signUpForm = document.querySelector(".signup-container");
-const signInLink = document.getElementById("signInLink");
-const signUpLink = document.getElementById("signUpLink");
+const signInForm = document.querySelector(".signin-container"),
+  signUpForm = document.querySelector(".signup-container"),
+  signInLink = document.getElementById("signInLink"),
+  signUpLink = document.getElementById("signUpLink"),
+  signUpUsername = document.getElementById("signUpUsername"),
+  signUpPassword = document.getElementById("signUpPassword"),
+  signUpPasswordConfirmation = document.getElementById(
+    "signUpPasswordConfirmation",
+  ),
+  signInUsername = document.getElementById("signInUsername"),
+  signInPassword = document.getElementById("signInPassword");
 
 function switchAuth(type) {
   if (type == "signin") {
@@ -12,6 +19,3 @@ function switchAuth(type) {
     signUpForm.classList.remove("hide-auth");
   }
 }
-
-signInLink.onclick = () => switchAuth("signin");
-signUpLink.onclick = () => switchAuth("signup");
