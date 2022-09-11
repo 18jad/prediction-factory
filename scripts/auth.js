@@ -87,5 +87,14 @@ signUpForm.addEventListener("submit", (e) => {
 
 signInForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  signIn();
+  try {
+    signIn();
+  } catch (err) {
+    signInError.classList.remove("error-hide");
+    signInError.textContent = err.message;
+    setTimeout(() => {
+      signInError.textContent = "";
+      signInError.classList.add("error-hide");
+    }, 2000);
+  }
 });
