@@ -303,6 +303,7 @@ main .dog-container p {
   overflow: hidden;
   display: grid;
   place-content: center;
+  transition: opacity 200ms ease-in-out, transform 250ms ease-in-out;
 }
 
 .input-field {
@@ -432,4 +433,10 @@ main .dog-container p {
 .hide-auth {
   transform: translate(-50%, -50%) translateY(-300px);
   opacity: 0;
+}
+
+.hide-auth-container {
+  opacity: 0;
+  transform: scale(10);
+  pointer-events: none;
 }
