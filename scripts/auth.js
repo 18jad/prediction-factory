@@ -8,7 +8,9 @@ const signInForm = document.querySelector(".signin-container"),
     "signUpPasswordConfirmation",
   ),
   signInUsername = document.getElementById("signInUsername"),
-  signInPassword = document.getElementById("signInPassword");
+  signInPassword = document.getElementById("signInPassword"),
+  signUpError = document.getElementById("signUpError"),
+  signInError = document.getElementById("signInError");
 
 function switchAuth(type) {
   if (type == "signin") {
@@ -27,7 +29,7 @@ function signUp() {
   let username = signUpUsername.value,
     password = signUpPassword.value,
     confirmedPassword = signUpPasswordConfirmation.value;
-  if (username.trim < 3) {
+  if (username.trim().length < 3) {
     throw new Error("Username is too short");
   }
   if (password != confirmedPassword) {
@@ -50,5 +52,14 @@ function signUp() {
 
 signUpForm.addEventListener("submit", (e) => {
   e.preventDefault();
-  signUp();
+  try {
+    signUp();
+  } catch (err) {
+    signUpError.classList.remove("error-hide");
+    signUpError.textContent = err.message;
+    setTimeout(() => {
+      signUpError.textContent = "";
+      signUpError.classList.add("error-hide");
+    }, 2000);
+  }
 });
