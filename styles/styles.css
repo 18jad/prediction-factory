@@ -510,4 +510,17 @@ main .dog-container p {
   flex-direction: column;
   border-radius: 10px;
   gap: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease-in-out;
+}
+
+.activity-section {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.show-activity {
+  opacity: 1;
+  pointer-events: unset;
 }
