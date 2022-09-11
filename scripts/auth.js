@@ -52,7 +52,7 @@ function signUp() {
 
 function signIn() {
   if (!localStorage.getItem("users")) {
-    throw new Error("No users available please sign in first");
+    throw new Error("No users available please sign up first");
   }
   let username = signInUsername.value,
     password = signInPassword.value,
