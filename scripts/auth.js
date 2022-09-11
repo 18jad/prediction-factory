@@ -34,6 +34,12 @@ function signUp() {
     throw new Error("Passwords are not identical");
   }
   if (localStorage.getItem("users")) {
+    let users = JSON.parse(localStorage.getItem("users"));
+    for (let i = 0; i < users.length; ++i) {
+      if (users[i].username == username) {
+        throw new Error("Username already exists");
+      }
+    }
     let arr = JSON.parse(localStorage.getItem("users"));
     arr.push({ username, password });
     localStorage.setItem("users", JSON.stringify(arr));
