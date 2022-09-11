@@ -1,4 +1,4 @@
-const form = document.querySelector("form"),
+const form = document.getElementById("predictionForm"),
   nameInput = document.getElementById("nameInput"),
   resultsContainer = document.querySelector(".prediction-results"),
   predictedAge = document.getElementById("predictedAge"),
