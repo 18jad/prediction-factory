@@ -148,6 +148,7 @@ function signInCompleted() {
   signInPassword.value = "";
   authContainer.classList.add("hide-auth-container");
   localStorage.setItem("authenticated", true);
+  getIp();
 }
 
 function signOut() {
