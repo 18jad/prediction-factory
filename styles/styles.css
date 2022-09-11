@@ -322,7 +322,6 @@ main .dog-container p {
   font-weight: 600;
   font-size: 15px;
   transition: border 150ms ease-in-out;
-  text-transform: capitalize;
   color: #333;
 }
 
