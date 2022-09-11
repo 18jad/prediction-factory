@@ -14,11 +14,18 @@ body {
   overflow-x: hidden;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 40px;
+}
+
 header .logo {
   display: flex;
   align-items: center;
   height: 100px;
-  padding: 20px 50px;
+  padding: 20px 10px;
   gap: 10px;
   color: #333;
 }
@@ -29,6 +36,20 @@ header .logo svg {
   height: 35px;
 }
 
+header .signout-btn {
+  padding: 10px;
+  border: 2px solid rgba(51, 51, 51, 0.1333333333);
+  border-radius: 7px;
+  color: #333;
+  background: rgba(255, 226, 226, 0.4);
+  outline: none;
+  cursor: pointer;
+  font-weight: 600;
+  transition: border 150ms ease-in-out, background 150ms ease-in-out;
+}
+header .signout-btn:hover {
+  background: rgba(255, 226, 226, 0.8);
+}
 main {
   display: flex;
   align-items: center;
